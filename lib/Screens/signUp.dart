@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:welcome_app/Screens/logIn.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({Key? key}) : super(key: key);
@@ -8,9 +9,18 @@ class SignUp extends StatelessWidget {
   var w = Colors.white;
   var g = Colors.grey;
   var bl = Colors.blue;
+
+  void selectScreen(BuildContext ctx){
+    Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_){
+      return LogIn() ;
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: Container(
       margin: const EdgeInsets.all(30),
       child: SingleChildScrollView(
         child: Column(
@@ -22,9 +32,7 @@ class SignUp extends StatelessWidget {
               child: Text(
                 'Welcome',
                 style: TextStyle(
-                    color: bl,
-                    fontSize: 45,
-                    fontWeight: FontWeight.w400),
+                    color: bl, fontSize: 45, fontWeight: FontWeight.w400),
               ),
             ),
             Container(
@@ -49,11 +57,11 @@ class SignUp extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 30),
               child: TextField(
                   decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(20),
-                    hintText: 'username',
-                    hintStyle: TextStyle(color: g),
-                    border: InputBorder.none,
-                  )),
+                contentPadding: const EdgeInsets.all(20),
+                hintText: 'username',
+                hintStyle: TextStyle(color: g),
+                border: InputBorder.none,
+              )),
             ),
             Container(
               margin: const EdgeInsets.only(bottom: 5),
@@ -71,7 +79,7 @@ class SignUp extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.all(20),
-                  hintText: 'omit445@gmail.com',
+                  hintText: 'email',
                   hintStyle: TextStyle(color: g),
                   border: InputBorder.none,
                 ),
@@ -94,8 +102,11 @@ class SignUp extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.all(20),
-                  suffixIcon: Icon(Icons.visibility_off , color: g,),
-                  hintText: 'hhhhhh',
+                  suffixIcon: Icon(
+                    Icons.visibility_off,
+                    color: g,
+                  ),
+                  hintText: 'Password',
                   hintStyle: TextStyle(color: g),
                   border: InputBorder.none,
                 ),
@@ -106,40 +117,70 @@ class SignUp extends StatelessWidget {
             SizedBox(
               height: 50,
               child: ElevatedButton(
-                child:const Text('Sign Up') ,
-                onPressed: (){},
+                child: const Text('Sign Up'),
+                onPressed: () {},
               ),
             ),
             Row(
               children: [
-                Text('Already have an account?' , style: TextStyle(color: g , fontWeight: FontWeight.w500 , fontSize: 16),),
-                TextButton(onPressed: (){}, child: Text('Log in' , style: TextStyle(color: bl, fontWeight: FontWeight.w500 , fontSize: 18 ),))
+                Text(
+                  'Already have an account?',
+                  style: TextStyle(
+                      color: g, fontWeight: FontWeight.w500, fontSize: 16),
+                ),
+                TextButton(
+                    onPressed: () => selectScreen(context),
+                    child: Text(
+                      'Log in',
+                      style: TextStyle(
+                          color: bl, fontWeight: FontWeight.w500, fontSize: 18),
+                    ))
               ],
             ),
             const Center(
-              child: Text('-or-', style: TextStyle(fontSize: 18),),
+              child: Text(
+                '-or-',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+              ),
             ),
             Center(
               child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 20 , horizontal: 90),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    IconButton(onPressed:(){}, icon: const Icon(
-                      FontAwesomeIcons.squareTwitter , color: Colors.lightBlueAccent, size: 30,
-                    ),),
-                    IconButton(onPressed:(){}, icon: const Icon(
-                      FontAwesomeIcons.squareInstagram , color: Colors.purple,size: 30,
-                    ),),
-                    IconButton(onPressed:(){}, icon: Icon(
-                      FontAwesomeIcons.squareFacebook , color: bl,size: 30,
-                    ),)
+                    FloatingActionButton(
+                      onPressed: () {},
+                      backgroundColor: Colors.lightBlueAccent,
+                      child: const Icon(
+                        FontAwesomeIcons.twitter,
+                        size: 35,
+                      ),
+                    ),
+                    FloatingActionButton(
+                      onPressed: () {},
+                      backgroundColor: Colors.purple,
+                      child: const Icon(
+                        FontAwesomeIcons.instagram,
+                        size: 35,
+                      ),
+                    ),
+                    FloatingActionButton(
+                      onPressed: () {},
+                      backgroundColor: Colors.blue,
+                      child: const Icon(
+                        FontAwesomeIcons.facebook,
+                        size: 35,
+                      ),
+                    )
                   ],
                 ),
               ),
             )
           ],
         ),
-      ),
+      ),)
     );
   }
 }

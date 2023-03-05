@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:welcome_app/Screens/signUp.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -30,9 +30,6 @@ class _sign_upState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-     backgroundColor: Colors.white,
-      body: SignUp(),
-    );
+     return SignUp();
   }
 }
