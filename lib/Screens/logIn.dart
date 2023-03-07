@@ -3,18 +3,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:welcome_app/Screens/signUp.dart';
 
 class LogIn extends StatelessWidget {
-   LogIn({Key? key}) : super(key: key);
+  LogIn({Key? key}) : super(key: key);
   var f = Colors.grey[200];
   var b = Colors.black;
   var w = Colors.white;
   var g = Colors.grey;
   var bl = Colors.blue;
+  bool obscureText = true;
 
-   void selectScreen(BuildContext ctx){
-     Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_){
-       return SignUp();
-     }));
-   }
+  void selectScreen(BuildContext ctx) {
+    Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (_) {
+      return SignUp();
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,26 +73,33 @@ class LogIn extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: f,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  margin: const EdgeInsets.only(bottom: 30),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.all(20),
-                      suffixIcon: Icon(
-                        Icons.visibility_off,
-                        color: g,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: f,
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      hintText: 'password',
-                      hintStyle: TextStyle(color: g),
-                      border: InputBorder.none,
+                      margin: const EdgeInsets.only(bottom: 5),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.all(20),
+                          suffixIcon: Icon(  Icons.visibility_off, color: g),
+                          hintText: '***********',
+                          hintStyle: TextStyle(color: g),
+                          border: InputBorder.none,
+                          ),
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: true,
+                        ),
+                      ),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 40),
+                      child: Text('Forger Password?' ,style: TextStyle(color: g , fontSize: 14 , fontWeight: FontWeight.w400),),
                     ),
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
-                  ),
+                  ],
                 ),
                 SizedBox(
                   height: 50,
@@ -112,7 +120,9 @@ class LogIn extends StatelessWidget {
                         child: Text(
                           'Sign up',
                           style: TextStyle(
-                              color: bl, fontWeight: FontWeight.w500, fontSize: 18),
+                              color: bl,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18),
                         ))
                   ],
                 ),
@@ -124,8 +134,8 @@ class LogIn extends StatelessWidget {
                 ),
                 Center(
                   child: Container(
-                    margin:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 60),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -159,7 +169,9 @@ class LogIn extends StatelessWidget {
                 )
               ],
             ),
-          ),)
-    );
+          ),
+        ));
   }
+
+  void setState(bool bool) {}
 }
